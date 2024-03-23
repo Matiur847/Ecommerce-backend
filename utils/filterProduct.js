@@ -25,9 +25,6 @@ class filterProduct {
 
         removeFields.forEach((key) => delete queryCopy[key]);
 
-        // Filter For Price and Rating
-        console.log(queryCopy)
-
         let queryStr = JSON.stringify(queryCopy);
         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
 
