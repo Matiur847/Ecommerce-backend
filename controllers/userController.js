@@ -127,7 +127,9 @@ exports.forgotPassword = async (req, res, next) => {
 
     await user.save({ validateBeforeSave: false });
 
-    const resetPassworUrl = `${clientUrl}/password/reset/${resetToken}`;
+    const resetPassworUrl = `${req.protocol}://${req.get(
+      "host"
+    )}/password/reset/${resetToken}`;
 
     const message = `your password reset token is :- \n\n ${resetPassworUrl} \n\nif you are not requsted this email, also ignore it `;
     await sendEmail({
