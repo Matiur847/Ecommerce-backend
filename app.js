@@ -14,7 +14,13 @@ const cookieParser = require("cookie-parser");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://ecommerce-frontend-nine-sage.vercel.app/",
+    credentials: true
+  })
+);
+app.set("trust proxy",1);
 app.use(cookieParser());
 app.use(fileUpload());
 
