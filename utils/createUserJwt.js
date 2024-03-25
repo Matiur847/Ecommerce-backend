@@ -8,12 +8,9 @@ const jwtUser = (user, statusCode, res) => {
     expiresIn: jwtExp,
   });
 
-  console.log("token", token);
-
   // create cookie option
   const options = {
-    // expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
-    expires: new Date(new Date().getTime() + 15 * 60 * 1000),
+    expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
     maxAge: 900000,
     httpOnly: true,
   };
