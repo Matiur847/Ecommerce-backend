@@ -16,9 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://ecommerce-frontend-nine-sage.vercel.app",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
+    origin: "http://localhost:3000",
   })
 );
 app.use(cookieParser());
@@ -46,6 +44,16 @@ app.use("/api/v1", payment);
 //   res.setHeader("Access-Control-Allow-Credentials", true);
 //   next();
 // });
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 
 app.use((req, res, next) => {
   res.send("Route Not Found!");
