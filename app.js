@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://ecommerce-backend-tawny-nine.vercel.app",
+      "https://ecommerce-backend-xh10.onrender.com",
     ],
     credentials: true,
   })
