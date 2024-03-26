@@ -11,7 +11,7 @@ const jwtUser = (user, statusCode, res) => {
   // create cookie option
   const options = {
     httpOnly: true,
-    SameSite: "Lax",
+    sameSite: "none",
     secure: true,
   };
 
