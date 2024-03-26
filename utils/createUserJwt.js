@@ -1,4 +1,4 @@
-const { jwtSec, jwtExp } = require("../config/config");
+const { jwtSec, jwtExp, nodeEnv } = require("../config/config");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 
@@ -12,7 +12,7 @@ const jwtUser = (user, statusCode, res) => {
   const options = {
     expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
     httpOnly: true,
-    samesite: process.env.NODE_ENV === "PRODUCTION" ? "None" : "",
+    samesite: nodeEnv === "PRODUCTION" ? "None" : "",
     secure: true,
   };
 
