@@ -15,12 +15,7 @@ const cookieParser = require("cookie-parser");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://ecommerce-frontend-seven-delta.vercel.app",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 const proxyOptions = {
   target: "https://ecommerce-frontend-seven-delta.vercel.app",
