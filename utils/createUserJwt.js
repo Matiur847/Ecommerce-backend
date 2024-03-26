@@ -13,11 +13,7 @@ const jwtUser = (user, statusCode, res) => {
     secure: true,
   };
 
-  res.status(statusCode).cookie("token", token, options).json({
-    success: true,
-    user,
-    token,
-  });
+  res.cookie("token", token);
 };
 
 module.exports = jwtUser;
