@@ -27,7 +27,7 @@ const proxyOptions = {
   changeOrigin: true,
 };
 
-const proxy = createProxyMiddleware({proxyOptions});
+const proxy = createProxyMiddleware(proxyOptions);
 
 app.use("/api/v1", proxy);
 
