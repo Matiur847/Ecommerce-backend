@@ -12,7 +12,7 @@ const jwtUser = (user, statusCode, res) => {
   const options = {
     httpOnly: true,
     secure: true,
-    sameSite: "Lax",
+    sameSite: "Strict",
   };
 
   res.status(statusCode).cookie("token", token, options).json({
