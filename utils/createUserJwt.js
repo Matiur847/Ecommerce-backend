@@ -16,7 +16,7 @@ const jwtUser = (user, statusCode, res) => {
     SameSite: "None",
   };
 
-  res.status(statusCode).cookie("token", token).json({
+  res.status(statusCode).cookie("token", token, options).json({
     success: true,
     user,
     token,
