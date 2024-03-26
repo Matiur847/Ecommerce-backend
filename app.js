@@ -6,6 +6,7 @@ const payment = require("./router/paymentRoute");
 const bodyParser = require("body-parser");
 const cloudinary = require("cloudinary");
 const fileUpload = require("express-fileupload");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 const app = express();
 require("./config/db");
 
@@ -14,10 +15,22 @@ const cookieParser = require("cookie-parser");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({
-  origin: "https://ecommerce-frontend-seven-delta.vercel.app",
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "https://ecommerce-frontend-seven-delta.vercel.app",
+    credentials: true,
+  })
+);
+
+const proxyOptions = {
+  target: "https://ecommerce-frontend-seven-delta.vercel.app",
+  changeOrigin: true,
+};
+
+const proxy = createProxyMiddleware({proxyOptions});
+
+app.use("/api/v1", proxy);
+
 app.use(cookieParser());
 app.use(fileUpload());
 
