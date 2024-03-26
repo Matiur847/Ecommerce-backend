@@ -13,6 +13,8 @@ const jwtUser = (user, statusCode, res) => {
     expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
     maxAge: 900000,
     httpOnly: true,
+    sameSite: "None",
+    secure: true,
   };
 
   res.status(statusCode).cookie("token", token, options).json({
