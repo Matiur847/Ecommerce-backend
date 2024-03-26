@@ -11,8 +11,7 @@ const jwtUser = (user, statusCode, res) => {
   // create cookie option
   const options = {
     httpOnly: true,
-    sameSite: "none",
-    secure: "production",
+    secure: true,
   };
 
   res.status(statusCode).cookie("token", token, options).json({
