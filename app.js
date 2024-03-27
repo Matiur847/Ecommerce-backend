@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000"],
     credentials: true,
   })
 );
@@ -30,7 +30,6 @@ app.use("/api/v1", orderRoute);
 app.use("/api/v1", payment);
 
 app.use((req, res) => {
-  res.setHeader("Set-Cookie", "type-test");
   res.send("Route Not Found!");
 });
 
