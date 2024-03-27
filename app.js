@@ -29,6 +29,10 @@ app.use("/api/v1", userRoute);
 app.use("/api/v1", orderRoute);
 app.use("/api/v1", payment);
 
+app.use((req, res) => {
+  res.send("Route Not Found!");
+});
+
 // error handler
 
 module.exports = app;
