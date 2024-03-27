@@ -14,7 +14,11 @@ const cookieParser = require("cookie-parser");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://ecommerce-backend-sable-seven.vercel.app",
+  })
+);
 
 app.use(cookieParser());
 app.use(fileUpload());
