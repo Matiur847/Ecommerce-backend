@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(fileUpload());
 
 app.use("/api/v1", productRoute);
-app.use("/api/v1", userRoute);
+app.use("/api/v1", cors(), userRoute);
 app.use("/api/v1", orderRoute);
 app.use("/api/v1", payment);
 
