@@ -8,6 +8,7 @@ const cloudinary = require("cloudinary");
 const fileUpload = require("express-fileupload");
 const app = express();
 require("./config/db");
+const path = require("path");
 
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -28,6 +29,12 @@ app.use("/api/v1", productRoute);
 app.use("/api/v1", userRoute);
 app.use("/api/v1", orderRoute);
 app.use("/api/v1", payment);
+
+app.use(express.static(path.join(__dirname + "../../frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname + "../../frontend/build/index.html"));
+});
 
 app.use((req, res) => {
   res.send("Route Not Found!");

@@ -183,6 +183,8 @@ exports.resetPassword = async (req, res, next) => {
     user.resetPasswordExpire = undefined;
     await user.save();
     jwtUser(user, 200, res);
+
+    // jwtUser(user, 400, "userController")
   });
 };
 
