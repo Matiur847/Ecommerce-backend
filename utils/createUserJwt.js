@@ -6,18 +6,15 @@ const jwt = require("jsonwebtoken");
 const jwtUser = (user, statusCode, res) => {
   const token = jwt.sign({ id: user._id }, jwtSec, {
     expiresIn: jwtExp,
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
   });
 
   // create cookie option
-  // const options = {
-  //   expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
-  //   httpOnly: true,
-  // };
+  const options = {
+    expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
+    httpOnly: true,
+  };
 
-  res.status(statusCode).cookie("token", token).json({
+  res.status(statusCode).cookie("token", token, options).json({
     success: true,
     user,
     token,
